@@ -1,0 +1,12 @@
+body {
+    background: url(../images/friendsbg2.jpg);
+    color: whitesmoke;    
+}
+
+h1 {
+    font-family: 'Permanent Marker', cursive;
+}
+
+#quiz {
+    font-family: 'Open Sans', sans-serif;
+}
