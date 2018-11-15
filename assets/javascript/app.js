@@ -1,75 +1,30 @@
-$(document).ready(function() {
+// $(document).ready(function() {
 
-// declare global variables
-    // startBtn variable
-    var startBtn = "start";
-    // quizContainer variable
-    var quizContainer 
-    // submitBtn variable
-    var submitBtn = "submit";
-    // results variable
-    var results = [];
-    // variable for myQuestions (make questions into objects with correctAnswer in the key)
-    var myQuestions = [
-        {
-            question: "Who is Regina Filange?",
-            answers: {
-                a: "Ross's ex wife",
-                b: "Joey's cousin",
-                c: "A made up character that Phoebe came up with",
-                d: "Rachel's boss"
-            },
-            // variable for correctAnswer
-            correctAnswer: "c"
-        },
-        {
-            question: "How many times has Ross been married by the end of the series?",
-            answers: {
-                a: "Three and counting...",
-                b: "Twice",
-                c: "He's never been married",
-                d: "Four times"
-            },
-            correctAnswer: "a"
-        },
-        {
-            question: "What was Phoebe in charge of at Rachel's surprise party?",
-            answers: {
-                a: "balloons and ice",
-                b: "making sure it was kept a secret from Rachel",
-                c: "buying the present",
-                d: "cups and ice"
-            },
-            correctAnswer: "d"
-        },
-        {
-            question: "Who fell in an open grave?",
-            answers: {
-                a: "Phoebe",
-                b: "Joey",
-                c: "Chandler",
-                d: "Ross"
-            },
-            correctAnswer: "d"
-        },
-        {
-            question: "What book did Joey keep in the freezer?",
-            answers: {
-                a: "It",
-                b: "Pet Semetary",
-                c: "The Shining",
-                d: "Little Women"
-            },
-            correctAnswer: "c"
-        }
-     ]
-    // variable for userInput
-    var userInput = [];
-    // variable for output
-    var output = [];
+// declare global consts
+    // startBtn const
+    // const startBtn = "start";
+    // submitBtn const
+    const submitBtn = "submit";
+    // results const
+    const results = [];
+
+    // const for userInput
+    const userInput = [];
+
+    // function for runTimer
+    function runTimer() {
+        $("#timer").text("00:00");
+        clock = (setTimer, 12000);
+    }
+
 
     // use jQuery to run our quiz when startBtn is clicked
-    $("#startBtn").click(buildQuiz);
+    // display timer to start at 120 seconds
+    $("#startBtn").on("click", function() {
+        $("#startBtn").hide();
+        runTimer();
+        buildQuiz();
+    });
 
     // use jQuery to run our results when submitBtn is clicked
     $("#submitBtn").click(showResults);
@@ -77,62 +32,138 @@ $(document).ready(function() {
 
 // use a function for buildQuiz to initialize game to display features and have it ready for reset
 
-    // display timer to start at 120 seconds
     function buildQuiz() {
-    // store the output in a variable
+    // store the output in a const
     output = [];
     // forEach question...
+    myQuestions.forEach((currentQuestion, questionNumber) => {
+        
+        // store the list of answer choices
+        const answers = [];
 
-    // store the list of answer choices
+        // and for each answer...
+        for (letter in currentQuestion.answers){
 
-    // and for each answer...
+            // add an html radio button
+            answers.push(
+                `<label>
+                    <input type="radio" name="question${questionNumber}"
+                    value="${letter}">
+                    ${letter} :
+                    ${currentQuestion.answers[letter]}
+                </label>`
+                );
+            }
+            
+            // add this question and its answers to the output
+        output.push(
+            `<div class="question"> ${currentQuestion.question} </div>
+            <div class="answers"> ${answers.join("")} </div>`
+        );
+        
 
-    // add an html radio button
-
-
-    // add this question and its answers to the output
+    });
 
     // final step is to combine out output list into one string and put it on the page
+    quizContainer.innerHTML = output.join("");
 
-
-    // display done button
-
-    // display for all done!
-    //display for correct answers
-    //display for incorrect answers
-    //display for unanswered questions
     }
 
-
-// display quiz right away buildQuiz();
-
-
-
-//declare a function to showResults
-    // on submit show the results
-        // add results to correct answers
-        // add results to incorrect answers
-        // add results to unanswered questions
-
-    //on timeout show the results
-        // add results to correct answers
-        // add results to incorrect answers
-        // add results to unanswered questions
-
-//on submit show results submitBtn.addEventListener("click", showResults);
-
-
+    function showResults() {
+        // gather answer containers from our quiz
+        const answerContainers = quizContainer.querySelectorAll(".answers");
     
-
-
-
-
-
-
-
-
-})
-
+        // keep track of user's answers
+        let numCorrect = 0;
+    
+        // for each question...
+        myQuestions.forEach((currentQuestion, questionNumber) => {
+          // find selected answer
+          const answerContainer = answerContainers[questionNumber];
+          const selector = `input[name=question${questionNumber}]:checked`;
+          const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+    
+          // if answer is correct
+          if (userAnswer === currentQuestion.correctAnswer) {
+            // add to the number of correct answers
+            numCorrect++;
+    
+            // color the answers green
+            answerContainers[questionNumber].style.color = "lightgreen";
+          } else {
+            // if answer is wrong or blank
+            // color the answers red
+            answerContainers[questionNumber].style.color = "red";
+          }
+        });
+    
+        // show number of correct answers out of total
+        resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+      }
+    
+      const quizContainer = document.getElementById("quiz");
+      const resultsContainer = document.getElementById("results");
+      const submitButton = document.getElementById("submit");
+      const myQuestions = [
+        {
+            question: "Who is Regina Filange?",
+            answers: {
+                a: "Ross's ex wife <br>",
+                b: "Joey's cousin <br>",
+                c: "A made up character that Phoebe came up with <br>",
+                d: "Rachel's boss <br>"
+            },
+            // const for correctAnswer
+            correctAnswer: "c"
+        },
+        {
+            question: "How many times has Ross been married by the end of the series?",
+            answers: {
+                a: "Three and counting... <br>",
+                b: "Twice <br>",
+                c: "He's never been married <br>",
+                d: "Four times <br>"
+            },
+            correctAnswer: "a"
+        },
+        {
+            question: "What was Phoebe in charge of at Rachel's surprise party?",
+            answers: {
+                a: "balloons and ice <br>",
+                b: "making sure it was kept a secret from Rachel <br>",
+                c: "buying the present <br>",
+                d: "cups and ice <br>"
+            },
+            correctAnswer: "d"
+        },
+        {
+            question: "Who fell in an open grave? <br>",
+            answers: {
+                a: "Phoebe <br>",
+                b: "Joey <br>",
+                c: "Chandler <br>",
+                d: "Ross <br>"
+            },
+            correctAnswer: "d"
+        },
+        {
+            question: "What book did Joey keep in the freezer? ",
+            answers: {
+                a: "It ",
+                b: "Pet Semetary ",
+                c: "The Shining ",
+                d: "Little Women "
+            },
+            correctAnswer: "c"
+        }
+     ];
+    
+      // display quiz right away
+      buildQuiz();
+    
+      // on submit, show results
+      submitButton.addEventListener("click", showResults);
+    
 
 
 
