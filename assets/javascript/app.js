@@ -22,7 +22,7 @@ $(document).ready(function() {
     //display for incorrect answers
     //display for unanswered questions
 
-// display quiz right awat buildQuiz();
+// display quiz right away buildQuiz();
 
 
 
