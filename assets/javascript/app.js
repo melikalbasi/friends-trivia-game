@@ -1,8 +1,6 @@
-// $(document).ready(function() {
-
 // declare global consts
 // startBtn const
-// const startBtn = "start";
+const startBtn = "start";
 // submitBtn const
 const submitBtn = "submit";
 $("#submitBtn").hide();
@@ -11,13 +9,6 @@ const results = [];
 
 // const for userInput
 const userInput = [];
-
-// const for time interval and count down
-// var timeInterval;
-// var counter = 120;
-
-
-
 
 
 
@@ -33,33 +24,33 @@ $("#startBtn").on("click", function () {
 $("#submitBtn").click(showResults);
 
 
-    //timer variales
-    var timer = 120;
-    var intervalId;
-    
-    $("timer").click(runTimer);
-    
-    // timer function
-    function runTimer() {
-        clearInterval(intervalId);
-        intervalId = setInterval(decrement, 1000);
-    
-    }
-    function decrement() {
-        timer--;
-        $("timer").html("<h2>Time left: " + timer + "!</h2>");
-        if (timer === 0) {
-            showResults();
-        }
-    };
 
-    
+//timer variales
+var timer = 120;
+var intervalId;
+
+
+// timer function
+function runTimer() {
+    $("timer").click(runTimer);
+    clearInterval(intervalId);
+    intervalId = setInterval(decrement, 1000);
+
+}
+function decrement() {
+    timer--;
+    $("timer").html("<h2>Time left: " + timer + "!</h2>");
+    if (timer === 0) {
+        showResults();
+    }
+};
+
 
 
 // use a function for buildQuiz to initialize game to display features and have it ready for reset
 
 function buildQuiz() {
-    
+
 
 
     // store the output in a const
@@ -93,10 +84,13 @@ function buildQuiz() {
 
     });
 
-    // final step is to combine out output list into one string and put it on the page
+    // final step is to combine output list into one string and put it on the page
     quizContainer.innerHTML = output.join("");
 
 }
+
+runTimer();
+
 
 function showResults() {
     // gather answer containers from our quiz
@@ -129,7 +123,7 @@ function showResults() {
     // show number of correct answers out of total
     resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
 }
-
+// display quiz on html
 const quizContainer = document.getElementById("quiz");
 const resultsContainer = document.getElementById("results");
 const submitButton = document.getElementById("submit");
@@ -187,7 +181,8 @@ const myQuestions = [
     }
 ];
 
-runTimer();
+
+
 
 
 
