@@ -39,7 +39,7 @@ function runTimer() {
 }
 function decrement() {
     timer--;
-    $("timer").html("<h2>Time left: " + timer + "!</h2>");
+    $("#timer").html("<h2>Time left: " + timer + "!</h2>");
     if (timer === 0) {
         showResults();
     }
