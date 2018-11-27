@@ -18,15 +18,19 @@ $("#startBtn").on("click", function () {
     buildQuiz();
     $("#startBtn").hide();
     $("#submitBtn").show();
+    runTimer();
 });
 
 // use jQuery to run our results when submitBtn is clicked
-$("#submitBtn").click(showResults);
+$("#submitBtn").on("click", function() {
+    showResults();
+    stop();
+});
 
 
 
 //timer variales
-var timer = 120;
+var timer = 20;
 var intervalId;
 
 
@@ -39,10 +43,15 @@ function runTimer() {
 }
 function decrement() {
     timer--;
-    $("#timer").html("<h2>Time left: " + timer + "!</h2>");
+    $("#timer").html("<h2>Timer: " + timer + " seconds left!</h2>");
     if (timer === 0) {
         showResults();
+        stop();
     }
+};
+function stop() {
+    clearInterval(intervalId);
+    reset();
 };
 
 
@@ -89,7 +98,6 @@ function buildQuiz() {
 
 }
 
-runTimer();
 
 
 function showResults() {
