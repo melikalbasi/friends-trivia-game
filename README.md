@@ -10,7 +10,7 @@ Launch the game on a modern web browser (Chrome, Firefox, Safari, etc.) or your 
 
 ## Deployment
 
-Test your knowledge [here](https://melikalbasi.github.io/TriviaGame/).
+Test your knowledge [here](https://melikalbasi.github.io/friends-trivia-game/).
 
 ## Built With
 
