@@ -1,32 +1,25 @@
-# TriviaGame
+# Friends Trivia Game
 
-# Project Title
+Timed trivia quiz testing your knowledge of the hit sitcome series Friends.
 
-I worked on this project to illustrate my skills in utilizing jQuery to write code for a timed trivia quiz.
+![FriendsTrivia](assets/images/friends.gif)
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Launch the game on a modern web browser (Chrome, Firefox, Safari, etc.) or your mobile device. Try and answer each question before the timer runs out!
 
 ## Deployment
 
-Play here: https://melikalbasi.github.io/TriviaGame/
+Test your knowledge [here](https://melikalbasi.github.io/TriviaGame/).
 
 ## Built With
 
-HTML
-CSS
-JavaScript
-jQuery
-Bootstrap
+* HTML5 $ CSS3
+* [JavaScript](https://www.javascript.com/)
+* [jQuery](https://jquery.com/)
+* [Bootstrap](https://getbootstrap.com/)
 
 ## Authors
 
-* **Melika Kalbasi** - *Initial work* - (https://github.com/melikalbasi)
+* **Melika Kalbasi** - *Initial work* - [melikalbasi](https://github.com/melikalbasi)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-
-## Acknowledgments
-
-* Inspired by the TV show Friends
