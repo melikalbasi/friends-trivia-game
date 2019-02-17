@@ -178,6 +178,56 @@ const myQuestions = [
         correctAnswer: "d"
     },
     {
+        question: "What was the name of the self help book that the girls loved? <br>",
+        answers: {
+            a: "Be Your Own Boss <br>",
+            b: "Be Your Own Lightning Bearer <br>",
+            c: "Be Your Own Chef <br>",
+            d: "Be Your Own Windkeeper <br>"
+        },
+        correctAnswer: "d"
+    },
+    {
+        question: "Which of the girls did Joey mistakenly see in the shower? <br>",
+        answers: {
+            a: "Phoebe <br>",
+            b: "Monica <br>",
+            c: "Rachel <br>",
+            d: "None <br>"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "What did Chandler get drunk on at Joey's birthday party? <br>",
+        answers: {
+            a: "Vodka sodas <br>",
+            b: "Jello shots <br>",
+            c: "Gin and Tonics <br>",
+            d: "Long Island Iced Teas <br>"
+        },
+        correctAnswer: "b"
+    },
+    {
+        question: "What was Monica's apartment number? <br>",
+        answers: {
+            a: "20 <br>",
+            b: "15 <br>",
+            c: "6 <br>",
+            d: "4 <br>"
+        },
+        correctAnswer: "a"
+    },
+    {
+        question: "What is the name of Joey's stuffed penguin? <br>",
+        answers: {
+            a: "Alisha May <br>",
+            b: "Hugsy <br>",
+            c: "Snowflake <br>",
+            d: "Penny <br>"
+        },
+        correctAnswer: "b"
+    },
+    {
         question: "What book did Joey keep in the freezer? ",
         answers: {
             a: "It ",
