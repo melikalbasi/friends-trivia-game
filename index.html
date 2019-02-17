@@ -1,35 +1,68 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Permanent+Marker" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="screen" href="../TriviaGame/assets/css/style.css" />
-    <title>Friends Trivia Game!</title>
-  </head>
-  <body>
-    <h1>How Well Do You Know Your F•R•I•E•N•D•S?</h1>
-    
-    <button id="startBtn">Start</button>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <div id="timer"></div>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Permanent+Marker" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="screen" href="../TriviaGame/assets/css/style.css" />
+  <title>Friends Trivia Game!</title>
+</head>
 
-    <div id="quiz"></div>
+<body>
+  <iframe src="" allow="autoplay" style="display:none" id="iframeAudio"></iframe>
+  <div class="container-fluid">
+    <div class="row headerRow">
+      <div class="col-lg-2">
+      </div>
+      <div class="col-lg-8">
+        <h1>How Well Do You Know Your F•R•I•E•N•D•S?</h1>
+      </div>
+      <div class="col-lg-2">
+      </div>
+    </div>
+    <div class="row questionRow">
+      <div class="col-lg-2">
+      </div>
+      <div class="col-lg-8">
+        <div class="trivia-content">
+          <h1 id="trivia">TRIVIA</h1>
+          <h4 id="timer-section">Time Remaining: <span id="timer"></span> Seconds</h4>
+          <h3><span id="question"></span></h3>
+          <section id="questionSection">
+            <div class="answer" data-value="0"><span id="answer0"> 0</span></div>
+            <div class="answer" data-value="1"><span id="answer1"> 1</span></div>
+            <div class="answer" data-value="2"><span id="answer2"> 2</span></div>
+            <div class="answer" data-value="3"><span id="answer3"> 3</span></div>
+          </section>
+          <div id="answer-image">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2">
+      </div>
+    </div>
 
-    <button id="submitBtn">Submit</button>
-
-    <div id="results"></div>
+  </div>
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="assets/javascript/app.js"></script>
-  </body>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script src="assets/javascript/app.js"></script>
+</body>
+
 </html>

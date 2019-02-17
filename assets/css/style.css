@@ -1,14 +1,74 @@
 body {
     background: url('../images/background.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
-    color: whitesmoke;    
+    /* background-size: cover; */
+    color: black;    
 }
-
 h1 {
     font-family: 'Permanent Marker', cursive;
 }
 
 #quiz {
     font-family: 'Open Sans', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.row {
+    margin: 40px auto;
+    padding: 20px auto;
+}
+.questionRow {
+    height: 40%;
+}
+
+.trivia-content {
+    background: rgba(255, 255, 255, 0.7);
+    color: black;
+}
+#trivia {
+    font-size: 5em;
+    background: rgb(131, 131, 211);
+    border: 6px solid white;
+    color: #00000099;
+    text-shadow: -3px 3px 1px white;
+    letter-spacing: 25px;
+    font-family: 'Permanent Marker', cursive;
+    opacity: .4;
+}
+#timer-section {
+    margin: 20px auto;
+}
+#timer {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: red;
+}
+.answer {
+    padding: 10px 0;
+    margin: 10px 15%;
+    font-size: 1.5em;
+    background: lavender;
+    color: rgb(71, 71, 187);
+    text-shadow: 1px 0px rgb(36, 33, 33);
+    font-family: 'Crimson Text', serif;
+    box-shadow: 2px 2px #000000;
+    border-radius: 10px;
+}
+.answer:hover {
+    background: rgb(156, 156, 232);
+}
+#answer-image {
+    padding: 20px;
+}
+
+.start-button {
+    margin: 100px auto;
+}
+.start-button:hover {
+    height: 204px;
 }

@@ -1,248 +1,232 @@
-// declare global consts
-// startBtn const
-const startBtn = "start";
-// submitBtn const
-const submitBtn = "submit";
-$("#submitBtn").hide();
-// results const
-const results = [];
+$(document).ready(function() {
 
-// const for userInput
-const userInput = [];
-
-
-
-// use jQuery to run our quiz when startBtn is clicked
-// display timer to start at 120 seconds
-$("#startBtn").on("click", function () {
-    buildQuiz();
-    $("#startBtn").hide();
-    $("#submitBtn").show();
-    runTimer();
-});
-
-// use jQuery to run our results when submitBtn is clicked
-$("#submitBtn").on("click", function() {
-    showResults();
-    stop();
-});
-
-
-
-//timer variales
-var timer = 20;
-var intervalId;
-
-
-// timer function
-function runTimer() {
-    $("timer").click(runTimer);
-    clearInterval(intervalId);
-    intervalId = setInterval(decrement, 1000);
-
-}
-function decrement() {
-    timer--;
-    $("#timer").html("<h2>Timer: " + timer + " seconds left!</h2>");
-    if (timer === 0) {
-        showResults();
-        stop();
-    }
-};
-function stop() {
-    clearInterval(intervalId);
-    reset();
-};
-
-
-
-// use a function for buildQuiz to initialize game to display features and have it ready for reset
-
-function buildQuiz() {
-
-
-
-    // store the output in a const
-    output = [];
-    // forEach question...
-    myQuestions.forEach((currentQuestion, questionNumber) => {
-
-        // store the list of answer choices
-        const answers = [];
-
-        // and for each answer...
-        for (letter in currentQuestion.answers) {
-
-            // add an html radio button
-            answers.push(
-                `<label>
-                    <input type="radio" name="question${questionNumber}"
-                    value="${letter}">
-                    ${letter} :
-                    ${currentQuestion.answers[letter]}
-                </label>`
-            );
-        }
-
-        // add this question and its answers to the output
-        output.push(
-            `<div class="question"> ${currentQuestion.question} </div>
-            <div class="answers"> ${answers.join("")} </div>`
-        );
-
-
-    });
-
-    // final step is to combine output list into one string and put it on the page
-    quizContainer.innerHTML = output.join("");
-
-}
-
-
-
-function showResults() {
-    // gather answer containers from our quiz
-    const answerContainers = quizContainer.querySelectorAll(".answers");
-
-    // keep track of user's answers
-    let numCorrect = 0;
-
-    // for each question...
-    myQuestions.forEach((currentQuestion, questionNumber) => {
-        // find selected answer
-        const answerContainer = answerContainers[questionNumber];
-        const selector = `input[name=question${questionNumber}]:checked`;
-        const userAnswer = (answerContainer.querySelector(selector) || {}).value;
-
-        // if answer is correct
-        if (userAnswer === currentQuestion.correctAnswer) {
-            // add to the number of correct answers
-            numCorrect++;
-
-            // color the answers green
-            answerContainers[questionNumber].style.color = "lightgreen";
-        } else {
-            // if answer is wrong or blank
-            // color the answers red
-            answerContainers[questionNumber].style.color = "red";
-        }
-    });
-
-    // show number of correct answers out of total
-    resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
-}
-// display quiz on html
-const quizContainer = document.getElementById("quiz");
-const resultsContainer = document.getElementById("results");
-const submitButton = document.getElementById("submit");
-const myQuestions = [
+var myQuestions = [
     {
         question: "Who is Regina Filange?",
-        answers: {
-            a: "Ross's ex wife <br>",
-            b: "Joey's cousin <br>",
-            c: "A made up character that Phoebe came up with <br>",
-            d: "Rachel's boss <br>"
-        },
-        // const for correctAnswer
-        correctAnswer: "c"
+        answers: ["Ross's ex wife",
+            "Joey's cousin",
+            "A made up character that Phoebe came up with",
+            "Rachel's boss"
+    ],
+        correctAnswer: 2
     },
     {
         question: "How many times has Ross been married by the end of the series?",
-        answers: {
-            a: "Three and counting... <br>",
-            b: "Twice <br>",
-            c: "He's never been married <br>",
-            d: "Four times <br>"
-        },
-        correctAnswer: "a"
+        answers: ["Three and counting...",
+            "Twice",
+            "He's never been married",
+            "Four times"
+    ],
+        correctAnswer: 0
     },
     {
         question: "What was Phoebe in charge of at Rachel's surprise party?",
-        answers: {
-            a: "balloons and ice <br>",
-            b: "making sure it was kept a secret from Rachel <br>",
-            c: "buying the present <br>",
-            d: "cups and ice <br>"
-        },
-        correctAnswer: "d"
+        answers: ["Balloons and ice",
+            "Making sure it was kept a secret from Rachel",
+            "Buying the present",
+            "Cups and ice"
+    ],
+        correctAnswer: 3
     },
     {
-        question: "Who fell in an open grave? <br>",
-        answers: {
-            a: "Phoebe <br>",
-            b: "Joey <br>",
-            c: "Chandler <br>",
-            d: "Ross <br>"
-        },
-        correctAnswer: "d"
+        question: "Who fell in an open grave?",
+        answers: ["Phoebe",
+            "Joey",
+            "Chandler",
+            "Ross"
+    ],
+        correctAnswer: 3
     },
     {
-        question: "What was the name of the self help book that the girls loved? <br>",
-        answers: {
-            a: "Be Your Own Boss <br>",
-            b: "Be Your Own Lightning Bearer <br>",
-            c: "Be Your Own Chef <br>",
-            d: "Be Your Own Windkeeper <br>"
-        },
-        correctAnswer: "d"
+        question: "What was the name of the self help book that the girls loved?",
+        answers: ["Be Your Own Boss",
+            "Be Your Own Lightning Bearer",
+            "Be Your Own Windkeeper",
+            "Be Your Own Chef"
+    ],
+        correctAnswer: 2
     },
     {
-        question: "Which of the girls did Joey mistakenly see in the shower? <br>",
-        answers: {
-            a: "Phoebe <br>",
-            b: "Monica <br>",
-            c: "Rachel <br>",
-            d: "None <br>"
-        },
-        correctAnswer: "c"
+        question: "Which of the girls did Joey mistakenly see in the shower?",
+        answers: ["Phoebe",
+            "Monica",
+            "Rachel",
+            "None"
+    ],
+        correctAnswer: 2
     },
     {
-        question: "What did Chandler get drunk on at Joey's birthday party? <br>",
-        answers: {
-            a: "Vodka sodas <br>",
-            b: "Jello shots <br>",
-            c: "Gin and Tonics <br>",
-            d: "Long Island Iced Teas <br>"
-        },
-        correctAnswer: "b"
+        question: "What did Chandler get drunk on at Joey's birthday party?",
+        answers: ["Vodka sodas",
+            "Jello shots",
+            "Gin and Tonics",
+            "Long Island Iced Teas"
+    ],
+        correctAnswer: 1
     },
     {
-        question: "What was Monica's apartment number? <br>",
-        answers: {
-            a: "20 <br>",
-            b: "15 <br>",
-            c: "6 <br>",
-            d: "4 <br>"
-        },
-        correctAnswer: "a"
+        question: "What was Monica's apartment number?",
+        answers: ["20",
+            "15",
+            "6",
+            "4"
+    ],
+        correctAnswer: 0
     },
     {
-        question: "What is the name of Joey's stuffed penguin? <br>",
-        answers: {
-            a: "Alisha May <br>",
-            b: "Hugsy <br>",
-            c: "Snowflake <br>",
-            d: "Penny <br>"
-        },
-        correctAnswer: "b"
+        question: "What is the name of Joey's stuffed penguin?",
+        answers: ["Alisha May",
+            "Hugsy",
+            "Snowflake",
+            "Penny"
+    ],
+        correctAnswer: 1
     },
     {
-        question: "What book did Joey keep in the freezer? ",
-        answers: {
-            a: "It ",
-            b: "Pet Semetary ",
-            c: "The Shining ",
-            d: "Little Women "
-        },
-        correctAnswer: "c"
+        question: "What book did Joey keep in the freezer?",
+        answers: ["It ",
+            "Pet Semetary ",
+            "The Shining ",
+            "Little Women "
+    ],
+        correctAnswer: 2
     }
 ];
 
 
+var counter = 0;
+    var correctAnswer = myQuestions[counter].correctAnswer;
+    var result = false;
+    var timer;
+    var intervalId;
+    var wins = 0;
+    var losses = 0;
+    var skips = 0;
+    var image;
 
 
+    function showAnswer() {
+        // Stop timer
+        stop();
+        // display result in $("#question")
+        $("#question").text(result);
+        // hide timer text
+        $("#timer-section").hide();
+        // hide questions
+        $("#questionSection").hide();
+     
+        // increment counter
+        counter++;
+        // if out of questions
+        if (counter >= myQuestions.length) {
+            // run end game display
+            setTimeout(function() {newQuestion();}, 5000);
+            setTimeout(function() {gameOver();}, 5000);
+            // setTimeout(gameOver(), 8000);
+        } else {
+            // wait 4 seconds, then call newQuestion()
+            setTimeout(function() {newQuestion();}, 4000);
+        }
+    };
 
+    function gameOver() {
+        $("#answer-image").empty();
+        $("#questionSection").show();
+        $("#question").text("GAME OVER! Could you BE any more of a Friends fan?!");
+        $("#answer0").text("Correct: " + wins); 
+        $("#answer1").text("Incorrect: " + losses); 
+        $("#answer2").text("Questions Skipped: " + skips); 
+        $("#answer3").text("Refresh to Try Again");
+        $("#timer-section").hide();
+        $("#iframeAudio").attr("src", "assets/music/friends-closing.wav");
+        $("body").css("background-image", "url(assets/images/background.jpg)");
+    }
+
+    function countdown() {
+        timer--;
+        $("#timer").text(timer);
+        // if a button clicked
+        if (result) {
+            // run the progression sequence
+            showAnswer();
+        // else if counter reaches 0 
+        } else if (timer < 1) {
+            // increment skips
+            skips++;
+            // set result to skipped
+            result = "You'll get 'em next time.";
+            image = $("<img>").attr("src", "assets/images/friendsskip.gif").attr("height", "300px")
+            $("#answer-image").html(image)
+            // run the progression sequence
+            showAnswer();
+        }
+    };
+
+    function start() {
+        intervalId = setInterval(countdown, 1000);
+    };
+
+    function reset() {
+        timer = 10;
+        $("#timer").text(timer);
+    };
+
+    function stop() {
+        clearInterval(intervalId);
+        reset();
+    };
+
+    function newQuestion() {
+        correctAnswer = myQuestions[counter].correctAnswer;
+        $("#question").text(myQuestions[counter].question);
+        $("#answer0").text(myQuestions[counter].answers[0]); 
+        $("#answer1").text(myQuestions[counter].answers[1]); 
+        $("#answer2").text(myQuestions[counter].answers[2]); 
+        $("#answer3").text(myQuestions[counter].answers[3]); 
+        result = false;
+        $("#timer-section").show();
+        $("#answer-image").empty();
+        $("#questionSection").show();
+        reset();
+        start();
+    };
+
+    // Answer listener and logic
+    $("#questionSection").on("click", ".answer", function() {
+        var answerChosen = $(this).data("value");
+        console.log(answerChosen);
+        console.log(correctAnswer);
+        if (answerChosen === correctAnswer) {
+            wins++;
+            result = "Correct!";
+            image = $("<img>").attr("src", "assets/images/friendsclap.gif").attr("height", "300px")
+            $("#answer-image").html(image)
+        } else {
+            losses++;
+            result = "Incorrect...the answer was '" + myQuestions[counter].answers[correctAnswer] + "'";
+            image = $("<img>").attr("src", "assets/images/friendslose.gif").attr("height", "300px")
+            $("#answer-image").html(image)
+
+        };
+    });
+
+
+    function startTrivia() {
+        $(".trivia-content").hide();
+        var startButton = $("<img>").attr("src", "assets/images/start.png").attr("height", "200px")
+        startButton.addClass("start-button");
+        $(".questionRow").append(startButton);
+    };
+    
+    startTrivia();
+    $(".start-button").on("click", function() {
+        console.log("clicked");
+        $(".trivia-content").show();  
+        $(".start-button").hide();
+        $("iframe").attr("src", "assets/music/friends1996.wav");
+        newQuestion();
+    }); 
+});
 
 
 
